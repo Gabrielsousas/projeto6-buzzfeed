@@ -17,24 +17,24 @@
   <header class="header">
     <span>BuzzQuizz</span>
   </header>
-  <main class="screen-1">
+  <main class="screen-1 hidden">
     <section class="criarQuizz">
       <span>Você não criou nenhum quizz ainda :(</span>
       <button class="botaoCriarQuizz" onclick="criarQuizz()">Criar Quizz</button>
     </section>
   </main>
 
-  <main class="screen-3 hidden">
+  <main class="screen-3">
     <section class="screen-3-1">
       <h2 class="h2-screen3">Comece pelo começo</h2>
-      <div>
-        <form class="formulario" action="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" method="post">
-          <input type="text" name="titulo" placeholder="Título do seu quizz">
-          <input type="text" name="imagem" placeholder="URL da imagem do seu quizz">
-          <input type="text" name="perguntas" placeholder="Quantidade de perguntas do seu quizz">
-          <input type="text" name="niveis" placeholder="Quantidade de níveis do quizz">
-        </form>
-      </div>
+      <form class="formulario" action="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" method="post">
+        <input class="input-titulo" type="text" name="titulo" placeholder="Título do seu quizz">
+        <input class="input-imagem" type="text" name="imagem" placeholder="URL da imagem do seu quizz">
+        <input class="input-qtdPerguntas" type="text" name="perguntas"
+          placeholder="Quantidade de perguntas do seu quizz">
+        <input class="input-qtdNiveis" type="text" name="niveis" placeholder="Quantidade de níveis do quizz">
+      </form>
+      <button onclick="validarCriacaoDoQuizz()">Prosseguir para criar perguntas</button>
     </section>
   </main>
 
