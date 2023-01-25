@@ -20,17 +20,25 @@
   <main class="screen-1">
     <section class="criarQuizz">
       <span>Você não criou nenhum quizz ainda :(</span>
-      <button class="botaoCriarQuizz">Criar Quizz</button>
+      <button class="botaoCriarQuizz" onclick="criarQuizz()">Criar Quizz</button>
     </section>
   </main>
 
-  <main class="screen-3">
+  <main class="screen-3 hidden">
     <section class="screen-3-1">
-
+      <h2 class="h2-screen3">Comece pelo começo</h2>
+      <div>
+        <form class="formulario" action="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" method="post">
+          <input type="text" name="titulo" placeholder="Título do seu quizz">
+          <input type="text" name="imagem" placeholder="URL da imagem do seu quizz">
+          <input type="text" name="perguntas" placeholder="Quantidade de perguntas do seu quizz">
+          <input type="text" name="niveis" placeholder="Quantidade de níveis do quizz">
+        </form>
+      </div>
     </section>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
