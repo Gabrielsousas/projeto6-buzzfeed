@@ -1,5 +1,5 @@
 
-let guardaTodosQuizzes={};
+let guardaTodosQuizzes = {};
 let titulo;
 let urlImagem;
 let qtdPerguntas;
@@ -47,6 +47,38 @@ function validarCriacaoDoQuizz() {
     }
 }
 
+criarPerguntas();
+
+function criarPerguntas() {
+    let perguntas = document.querySelector(".screen-3-2");
+    console.log(perguntas)
+
+    for (i = 1; i <= qtdPerguntas; i++) {
+        perguntas.innerHTML += `
+        <div class="caixa-pergunta caixa-pergunta-${i}">
+        <h3 class="h3-screen3">Pergunta ${i}</h3>
+        <ion-icon name="create-outline"></ion-icon>
+        </div>
+        <div class="pergunta-${i} caixa-formulario hidden">
+        <h3 class="h3-screen3">Pergunta ${i}</h3>
+        <input id="#${i}pergunta" class="input-pergunta-${i}" type="text" placeholder="Texto da pergunta">
+        <input type="text" placeholder="Cor de fundo da pergunta">
+        <h3 class="h3-screen3">Resposta correta</h3>
+        <input id="#${i}resposta" class="input-resposta-${i}" type="text" placeholder="Resposta correta">
+        <input id="#${i}resposta-img" type="text" placeholder="URL da imagem">
+        <h3 class="h3-screen3">Respostas incorretas</h3>
+        <input id="#${i}erro-1" class="erro" type="text" placeholder="Resposta incorreta ${i}">
+        <input id="#${i}erro-1-img" type="text" placeholder="URL da imagem ${i}">
+        <input id="#${i}erro-2" class="erro" type="text" placeholder="Resposta incorreta 2">
+        <input id="#${i}erro-2-img" type="text" placeholder="URL da imagem 2">
+        <input id="#${i}erro-3" class="erro" type="text" placeholder="Resposta incorreta 3">
+        <input id="#${i}erro-3-img" type="text" placeholder="URL da imagem 3">
+      </div>
+        `
+    }
+}
+
+
 function checkUrl(str) {
     var a = document.createElement('a');
     a.href = str;
@@ -54,19 +86,20 @@ function checkUrl(str) {
 }
 
 // Final de Scripts Guilherme -------------------------------------------------
-function pegaTodosQuizzesServidor(){
+
+function pegaTodosQuizzesServidor() {
     const pegaTodosQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
     pegaTodosQuizzes.then(listaTodosQuizzes);
     pegaTodosQuizzes.catch(error);
 }
 
-function listaTodosQuizzes(resposta){
-    guardaTodosQuizzes={};
-    guardaTodosQuizzes= resposta.data;
+function listaTodosQuizzes(resposta) {
+    guardaTodosQuizzes = {};
+    guardaTodosQuizzes = resposta.data;
     const listaQuiz = document.querySelector('ul');
     listaQuiz.innerHTML = '';
     console.log(guardaTodosQuizzes);
-    for(let i=0;i<guardaTodosQuizzes.length;i++){
+    for (let i = 0; i < guardaTodosQuizzes.length; i++) {
         const template = `
         <li onclick="acessarScreen2()">
             <div class="caixaQuizz">                
@@ -81,9 +114,9 @@ function listaTodosQuizzes(resposta){
 
     }
 }
-function acessarScreen2(){
+function acessarScreen2() {
     alert("ok");
 }
-function error(){
+function error() {
     alert("erro");
 }
