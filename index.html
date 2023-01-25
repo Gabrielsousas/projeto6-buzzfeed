@@ -17,15 +17,25 @@
   <header class="header">
     <span>BuzzQuizz</span>
   </header>
-  <main class="screen-1 hidden">
+  <main class="screen-1">
     <section class="criarQuizz">
       <span>Você não criou nenhum quizz ainda :(</span>
       <button class="botaoCriarQuizz" onclick="criarQuizz()">Criar Quizz</button>
     </section>
+
+    <section class="todosOsQuizzes">
+      <h1 class="h1-screen1">Todos os Quizzes</h1>
+      <ul></ul>
+    </section>
   </main>
 
+<<<<<<< HEAD
   <main class="screen-3">
     <section class="screen-3-1 hidden">
+=======
+  <main class="screen-3 hidden">
+    <section class="screen-3-1">
+>>>>>>> bc80d2fcc793dae06e501cdfdc01f1220fd4ec9a
       <h2 class="h2-screen3">Comece pelo começo</h2>
       <form class="formulario" action="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" method="post">
         <input class="input-titulo" type="text" name="titulo" placeholder="Título do seu quizz">
@@ -42,6 +52,8 @@
 
   </main>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </body>
 

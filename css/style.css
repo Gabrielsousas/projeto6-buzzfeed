@@ -60,6 +60,56 @@ main {
     align-items: center;
 }
 
+.todosOsQuizzes{
+    min-width: 375px;
+    height: 100%;
+    margin-left: 18px;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+}
+li{
+    width: 340px;
+    height: 181px;
+    background-size: 100% 100%;
+   /* -webkit-mask-image: linear-gradient(to top, 0,0,0,1 50%, transparent 50%);*/
+   
+}
+.todosOsQuizzes .caixaQuizz{
+    width: 340px;
+    height: 181px;
+    display: flex;
+    position: relative;
+    margin-top: 14px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,0,0,0), rgba(0,0,0,1));
+}
+
+.todosOsQuizzes .caixaQuizz p{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    width: 301px;
+    height: 54px;
+    position: absolute;
+    bottom: 6px;
+    left: 17px;
+    z-index: 1;
+    color: white;
+    display: flex;
+    align-items: center;
+
+}
+
+.h1-screen1{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: black;
+}
+
 .botaoCriarQuizz {
     background-color: white;
     color: #ec362d;
