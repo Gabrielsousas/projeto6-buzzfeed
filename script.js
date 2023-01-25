@@ -82,7 +82,8 @@ function listaTodosQuizzes(resposta){
     }
 }
 function acessarScreen2(){
-    alert("ok");
+    document.querySelector(".screen-1").classList.add("hidden");
+    //INSERIR TELA 2
 }
 function error(){
     alert("erro");
