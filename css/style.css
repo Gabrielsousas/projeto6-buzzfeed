@@ -60,20 +60,34 @@ main {
     align-items: center;
 }
 
-.todosOsQuizzes{
+.todosQuizz{
     min-width: 375px;
     height: 100%;
-    margin-left: 18px;
     margin-top: 35px;
     display: flex;
     flex-direction: column;
+}
+.todosOsQuizzes{
+    min-width: 375px;
+    max-width: 1051px;
+    height: 100%;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+}
+ul{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 li{
     width: 340px;
     height: 181px;
     background-size: 100% 100%;
-   /* -webkit-mask-image: linear-gradient(to top, 0,0,0,1 50%, transparent 50%);*/
-   
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 5px;
+    margin-right: 5px;   
 }
 .todosOsQuizzes .caixaQuizz{
     width: 340px;
@@ -108,6 +122,8 @@ li{
     font-size: 20px;
     line-height: 23px;
     color: black;
+    margin-left: 5px;
+    
 }
 
 .botaoCriarQuizz {
