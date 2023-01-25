@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.criarQuizz {
+    height: 181px;
+    width: 73%;
+    border: dashed 1px #D4D4D4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.criarQuizz span {
+    width: 250px;
+    height: 107px;
+    color: #b9b9b9;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.botaoCriarQuizz {
+    background-color: white;
+    color: #ec362d;
+    height: 40px;
+    width: 151px;
+    border-radius: 50px;
+    border: 1px;
+    border-color: #EC362D;
+    outline-style: dashed;
+    outline-color: #EC362D;
+    margin-bottom: 33px;
+
+    font-weight: 400;
+    font-size: 21px;
+}
