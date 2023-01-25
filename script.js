@@ -27,7 +27,11 @@ function validarCriacaoDoQuizz() {
 
     if ((titulo.length > 20 && titulo.length < 65) && (checkUrl(urlImagem)) && (qtdPerguntas >= 3 && qtdNiveis >= 2)) {
         document.querySelector(".screen-3-1").classList.add("hidden");
-        console.log(document.querySelector(".screen-3-1"));
+        document.querySelector(".screen-3-2").classList.remove("hidden");
+
+        dados.title = titulo;
+        dados.image = urlImagem;
+
     } else {
         alert(`
         Temos algo de errado!
