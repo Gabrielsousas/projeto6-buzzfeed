@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
+ 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
   <header class="header">
     <span>BuzzQuizz</span>
   </header>
-  <main class="screen-1">
+  <main class="screen-1 hidden">
     <section class="criarQuizz">
       <span>Você não criou nenhum quizz ainda :(</span>
       <button class="botaoCriarQuizz" onclick="criarQuizz()">Criar Quizz</button>
@@ -30,7 +30,13 @@
       </div>
     </section>
   </main>
-
+  <div class="screen-2">
+    <section>
+      <img class="image-header" src="https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg" alt="">
+      <p class="titulo-quizz">Titulo do Quizz</p>
+      <div class="black-layer"></div>
+    </section>
+  </div>
   <main class="screen-3">
     <section class="screen-3-1 hidden">
       <h2 class="h2-screen3">Comece pelo começo</h2>
@@ -49,13 +55,22 @@
     <section class="screen-3-3 hidden">
       <h2 class="h2-screen3">Agora, decida os níveis!</h2>
     </section>
+    <section class="screen-3-4 hidden">
+      <h2 class="h2-screen3">Seu quizz está pronto!</h2>
+      <div class="imagem-final">
+        <img src="https://www.ufmt.br/ocs/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png" alt="">
+        <p>O quão Potterhead é você?</p>
+      </div>
+      <button id="acessarQuizz">Acessar Quizz</button>
+      <button id="voltarHome">Voltar pra home</button>
+    </section>
   </main>
-
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
+>>>>>>> 8ce35a2a0ab3ff70948604600e061849c8e4b27d
 </body>
 
 </html>
