@@ -280,6 +280,39 @@ li {
     margin: 5px 0;
 }
 
+.imagem-final {
+    display: flex;
+    height: 266px;
+    width: 500px;
+    justify-content: center;
+    position: relative;
+}
+
+.screen-3-4 img {
+    min-width: 500px;
+    min-height: 266px;
+    max-width: 500px;
+    max-height: 266px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.imagem-final {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.screen-3-4 p {
+    position: absolute;
+    color: white;
+    bottom: 15px;
+    left: 15px;
+}
+
+#voltarHome {
+    background-color: white;
+}
+
+
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/
 
 .hidden {

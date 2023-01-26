@@ -5,7 +5,7 @@ let urlImagem;
 let qtdPerguntas;
 let qtdNiveis;
 
-let dados = {
+const dados = {
     title: '',
     image: '',
     questions: [],
