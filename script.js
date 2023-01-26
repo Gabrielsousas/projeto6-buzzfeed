@@ -107,6 +107,19 @@ function criarNiveis() {
     `
 }
 
+function criarFinalizacao() {
+    let final = document.querySelector(".screen-3-4");
+
+    final.innerHTML += `
+    <div class="imagem-final">
+    <img src="${urlImagem}" alt="">
+    <p>${titulo}</p>
+    </div>
+    <button id="acessarQuizz">Acessar Quizz</button>
+    <button id="voltarHome">Voltar pra home</button>
+    `
+}
+
 function validarCriacaoDasPerguntas() {
 
     dados.questions = [];
@@ -219,6 +232,8 @@ function validarCriacaoDosNiveis() {
         promisse.then(resposta => {
             console.log("Post concluído");
             console.log(`Dados:${dados}`);
+
+            prosseguirParaFinalizacao();
         })
         promisse.catch(erro => console.log("Houve um erro no post"))
     }
@@ -229,6 +244,13 @@ function prosseguirParaNiveis() {
     document.querySelector('.screen-3-3').classList.remove('hidden');
 
     criarNiveis();
+}
+
+function prosseguirParaFinalizacao() {
+    document.querySelector('.screen-3-3').classList.add('hidden');
+    document.querySelector('.screen-3-4').classList.remove('hidden');
+
+    criarFinalizacao();
 }
 
 function abrirPergunta(i) {
@@ -246,8 +268,6 @@ function checkUrl(str) {
     a.href = str;
     return (a.host && a.host != window.location.host);
 }
-
-
 
 // Final de Scripts Guilherme -------------------------------------------------
 
