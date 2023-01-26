@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buzzquizz</title>
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <script src="./script.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzzquizz</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <span>BuzzQuizz</span>
+  </header>
+  <main class="screen-1 hidden" >
+    <section class="criarQuizz hidden">
+      <span>Você não criou nenhum quizz ainda :(</span>
+      <button class="botaoCriarQuizz">Criar Quizz</button>
+    </section>
+    <section class="quizz-online">
+    </section>
+  </main>
+<div class="screen-2">
+  <section>
+    <img class="image-header" src="https://www.pontotel.com.br/wp-content/uploads/2022/05/imagem-corporativa.jpg" alt="">
+    <p class="titulo-quizz">Titulo do Quizz</p>
+    <div class="black-layer"></div>
+  </section>
+</div>
+  <main class="screen-3">
+    <section class="screen-3-1">
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>
