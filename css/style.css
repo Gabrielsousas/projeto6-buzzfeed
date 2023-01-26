@@ -3,10 +3,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.hidden {
-    display: none;
-}
-
 .header {
     background-color: #EC362D;
     width: 100%;
@@ -211,17 +207,6 @@ li {
     line-height: 25px;
 }
 
-.formulario :nth-child(4),
-.formulario :nth-child(7) {
-    margin-top: 22px;
-    margin-bottom: 20px;
-}
-
-.formulario :nth-child(9),
-.formulario :nth-child(11) {
-    margin-bottom: 18px;
-}
-
 .caixa-pergunta {
     background-color: white;
     width: 600px;
@@ -269,3 +254,7 @@ li {
 }
 
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/
+
+.hidden {
+    display: none;
+}
