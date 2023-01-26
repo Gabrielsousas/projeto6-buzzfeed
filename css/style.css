@@ -223,6 +223,22 @@ li {
     font-size: 23px;
 }
 
+.caixa-nivel {
+    background-color: white;
+    width: 600px;
+    height: 74px;
+    margin-top: 24px;
+    box-shadow: 0px 0px 10px 0px #0000000D;
+    display: flex;
+    padding: 0 34px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.caixa-nivel ion-icon {
+    font-size: 23px;
+}
+
 .caixa-formulario {
     background-color: white;
     box-shadow: 0px 0px 10px 0px #0000000D;
@@ -251,6 +267,17 @@ li {
 .caixa-formulario :nth-child(9),
 .caixa-formulario :nth-child(11) {
     margin-bottom: 15px;
+}
+
+.caixa-formulario .nivel-descricao {
+    width: 94%;
+    height: 177px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    margin: 5px 0;
 }
 
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/

@@ -79,21 +79,38 @@ function criarPerguntas() {
     }
 
     perguntas.innerHTML += `
-    <button onclick="validarCriacaoDasPerguntas(${i})">Prosseguir para criar níveis</button>
+    <button onclick="validarCriacaoDasPerguntas()">Prosseguir para criar níveis</button>
     `
 }
 
 function criarNiveis() {
-    let niveis = document.querySelector("screen-3-3");
+    let niveis = document.querySelector(".screen-3-3");
+    console.log(niveis);
 
     for (i = 1; i <= qtdNiveis; i++) {
         niveis.innerHTML += `
-        
+        <div class="caixa-nivel caixa-nivel-${i}" onclick="abrirNivel(${i})">
+        <h3 class="h3-screen3">Nível ${i}</h3>
+        <ion-icon name="create-outline"></ion-icon>
+        </div>
+        <div class="nivel-${i} caixa-formulario hidden">
+        <h3 class="h3-screen3">Nível ${i}</h3>
+        <input id="${i}nivel-titulo" type="text" placeholder="Título do nível">
+        <input id="${i}nivel-acerto" type="text" placeholder="% de acerto mínimo">
+        <input id="${i}nivel-url" type="text" placeholder="URL da imagem do nível">
+        <textarea id="${i}nivel-descricao" class="nivel-descricao" placeholder="Descrição do nível" cols="30" rows="10"></textarea>
+        </div>
         `
     }
+    niveis.innerHTML += `
+    <button onclick="validarCriacaoDosNiveis()">Finalizar Quizz</button>
+    `
 }
 
 function validarCriacaoDasPerguntas() {
+
+    dados.questions = [];
+
     for (i = 1; i <= qtdPerguntas; i++) {
 
         let textoPergunta = document.getElementById(`${i}pergunta`).value;
@@ -147,19 +164,80 @@ function validarCriacaoDasPerguntas() {
             dados.questions.push(objPerguntas);
             console.log("Dados:", dados.questions);
 
+            prosseguirParaNiveis();
+
         } else {
             alert(`Algo deu errado na pergunta ${i}! Por favor, preencha os dados corretamente.`);
         }
     }
 }
 
+function validarCriacaoDosNiveis() {
+
+    let algumNivelZero = false;
+    let teveErro = false;
+
+    dados.levels = [];
+
+    for (i = 1; i <= qtdNiveis; i++) {
+        let nivelTitulo = document.getElementById(`${i}nivel-titulo`).value;
+        let nivelAcerto = Number(document.getElementById(`${i}nivel-acerto`).value);
+        let nivelUrl = document.getElementById(`${i}nivel-url`).value;
+        let nivelDescricao = document.getElementById(`${i}nivel-descricao`).value;
+
+        let objNiveis = {
+            title: nivelTitulo,
+            image: nivelUrl,
+            text: nivelDescricao,
+            minValue: nivelAcerto
+        }
+
+        const checkNivel = (nivelTitulo.length >= 10);
+        console.log("CheckNivel:", checkNivel);
+        const checkPercentual = ((nivelAcerto >= 0) && (nivelAcerto <= 100));
+        console.log("checkPercentual:", checkPercentual);
+        const checkDescricao = (nivelDescricao.length >= 30);
+        console.log("checkDescricao:", checkDescricao);
+        const checkErrarTodas = (nivelAcerto === 0 || algumNivelZero);
+        console.log("checkErrarTodas:", checkErrarTodas);
+        if (nivelAcerto === 0) {
+            algumNivelZero = true;
+        }
+        console.log("algumNivelZero:", algumNivelZero);
+        if ((checkNivel) && (checkPercentual) && checkUrl(nivelUrl) && (checkDescricao) && (checkErrarTodas)) {
+            console.log("check correto dos níveis");
+            dados.levels.push(objNiveis);
+            console.log("Objetos dos níveis:", objNiveis);
+        } else {
+            alert(`Algo deu errado no nível ${i}! Por favor, preencha os dados corretamente.`)
+            teveErro = true;
+        }
+    }
+    if (!teveErro) {
+        console.log(dados);
+        const promisse = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", dados);
+        promisse.then(resposta => {
+            console.log("Post concluído");
+            console.log(`Dados:${dados}`);
+        })
+        promisse.catch(erro => console.log("Houve um erro no post"))
+    }
+}
+
 function prosseguirParaNiveis() {
     document.querySelector('.screen-3-2').classList.add('hidden');
     document.querySelector('.screen-3-3').classList.remove('hidden');
+
+    criarNiveis();
 }
 
 function abrirPergunta(i) {
     const abrir = document.querySelector(`.pergunta-${i}`);
+    abrir.classList.toggle("hidden");
+}
+
+function abrirNivel(i) {
+    const abrir = document.querySelector(`.nivel-${i}`);
     abrir.classList.toggle("hidden");
 }
 
