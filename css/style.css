@@ -3,10 +3,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.hidden {
-    display: none;
-}
-
 .header {
     background-color: #EC362D;
     width: 100%;
@@ -269,3 +265,7 @@ li {
 }
 
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/
+
+.hidden {
+    display: none;
+}
