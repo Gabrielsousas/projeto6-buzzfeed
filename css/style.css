@@ -399,3 +399,13 @@ li {
 .hidden {
     display: none;
 }
+
+
+@media (max-width: 375px) {
+    .h1-screen1 {
+        margin-left: 18px;
+    }
+    .criarQuizz {
+        width: 90%;
+    }
+}
