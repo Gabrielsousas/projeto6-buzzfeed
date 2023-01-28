@@ -185,8 +185,8 @@ li {
 
 .question {
     display: flex;
-    justify-content: center;
-    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: row;
     height: 436px;
     width: 375px;
     box-shadow: 0px 0px 10px 0px #0000000D;
@@ -197,12 +197,30 @@ li {
     line-height: 22px;
 }
 
+.card-question{
+    margin: 10px;  
+}
+.question p {
+    color: black;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+}
+
 .question-title{
     height: 89px;
     width: 340px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 10px;
+}
+
+.question img{
+    height: 113px;
+    width: 163px;  
 }
 
 

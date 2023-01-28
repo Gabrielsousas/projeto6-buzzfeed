@@ -4,7 +4,7 @@ let titulo;
 let urlImagem;
 let qtdPerguntas;
 let qtdNiveis;
-let quizzId = 2;
+let quizzId = 1;
 let perguntas = [];
 const dados = {
     title: '',
@@ -318,7 +318,6 @@ function mostrarQuizz(){
     document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
     document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
     perguntas = shuffle(response.data.questions);
-    console.log(perguntas);
     mostrarPerguntas(response);
   })
   .catch(error => {
@@ -333,16 +332,32 @@ function shuffle(array) {
 
 function mostrarPerguntas(response){
     const quizzOnScreen = document.querySelector('.selected-quizz')
-  for (let i = 0; i < perguntas.length; i++){
+    for (let i = 0; i < perguntas.length; i++){
     let color = perguntas[i].color;
     quizzOnScreen.innerHTML += `
         <div class="question">
             <h2 class="question-title color${i}">${perguntas[i].title}</h2>
         </div>
       `
-      document.querySelector(`.color${i}`).style.backgroundColor = `${color}`;
+      alterarCor(i,color)
+      for (let j= 0; j < perguntas[i].answers.length; j++){
+        let element = document.querySelectorAll('.question')
+        element[i].innerHTML += `
+        <div class="card-question">
+        <img src=${perguntas[i].answers[j].image}>
+        <p>${perguntas[i].answers[j].text}</p>
+        </div>
+        `
+      }
   }
 }
 
+function alterarCor(elemento, cor){
+    document.querySelector(`.color${elemento}`).style.backgroundColor = `${cor}`;
+}
 
+
+function inserirPerguntas(){
+    document.querySelector('.question').innerHTML += ""
+}
 //Final-de-Scripts-Gabriel---------------------------------------------------------------
