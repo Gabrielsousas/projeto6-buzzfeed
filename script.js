@@ -4,7 +4,8 @@ let titulo;
 let urlImagem;
 let qtdPerguntas;
 let qtdNiveis;
-
+let quizzId = 2;
+let perguntas = [];
 const dados = {
     title: '',
     image: '',
@@ -305,3 +306,43 @@ function acessarScreen2() {
 function error() {
     alert("erro");
 }
+
+
+//Scripts-Gabriel---------------------------------------------------------------
+
+mostrarQuizz()
+function mostrarQuizz(){
+  axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`)
+  .then(response => {
+    console.log(response.data);
+    document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
+    document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
+    perguntas = shuffle(response.data.questions);
+    console.log(perguntas);
+    mostrarPerguntas(response);
+  })
+  .catch(error => {
+    alert('Ocorreu um erro ao selecionar o seu quizz. Por favor recarregue a página ou tente novamente')
+  });
+}
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+  return array;
+}
+
+function mostrarPerguntas(response){
+    const quizzOnScreen = document.querySelector('.selected-quizz')
+  for (let i = 0; i < perguntas.length; i++){
+    let color = perguntas[i].color;
+    quizzOnScreen.innerHTML += `
+        <div class="question">
+            <h2 class="question-title color${i}">${perguntas[i].title}</h2>
+        </div>
+      `
+      document.querySelector(`.color${i}`).style.backgroundColor = `${color}`;
+  }
+}
+
+
+//Final-de-Scripts-Gabriel---------------------------------------------------------------

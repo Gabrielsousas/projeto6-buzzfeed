@@ -146,6 +146,7 @@ li {
 
 /*---------------------- Inicio da formatação de tela 2 ------------------------------------------*/
 .screen-2{
+  height: 227px;
   margin-top: 69px;
   position: relative;
 }
@@ -169,7 +170,7 @@ li {
 
 .titulo-quizz {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -177,6 +178,34 @@ li {
   font-size: 39px;
   font-weight: 400;
 }
+
+.selected-quizz{
+  margin: 0 auto;
+}
+
+.question {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 436px;
+    width: 375px;
+    box-shadow: 0px 0px 10px 0px #0000000D;
+    color: white;
+    font-family: Roboto;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.question-title{
+    height: 89px;
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /*---------------------- Fim da formatação de tela 2 ------------------------------------------*/
 
 
