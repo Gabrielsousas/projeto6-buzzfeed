@@ -1,5 +1,8 @@
 
 let guardaTodosQuizzes = {};
+let guardaResposta = {};
+let listaIds=[];
+let lista;
 let titulo;
 let urlImagem;
 let qtdPerguntas;
@@ -250,8 +253,19 @@ function validarCriacaoDosNiveis() {
        // promisse.then(prosseguirParaFinalizacao);
           promisse.then(resposta => {
             console.log("Post concluído",resposta);
-            //console,log(resposta.id);
+            guardaResposta = resposta.data;
+            console.log("id: ",guardaResposta.id);
             console.log(`Dados:${dados}`);
+            console.log("listaId antes: ",listaIds);
+            listaIds += guardaResposta.id;
+            console.log("listaId depois: ",listaIds);
+            let listaNoStorage = JSON.stringify(listaIds);
+            console.log("lista indo pro storage ",listaNoStorage);
+            lista = localStorage.getItem("lista");
+            lista += listaNoStorage;
+            localStorage.setItem("lista", lista);
+            const mostraLista = localStorage.getItem("lista");
+            console.log("Mostra storage real: ",mostraLista);
 
             prosseguirParaFinalizacao();
         })
