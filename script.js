@@ -5,6 +5,7 @@ let urlImagem;
 let qtdPerguntas;
 let qtdNiveis;
 
+
 const dados = {
     title: '',
     image: '',
@@ -109,19 +110,19 @@ function criarNiveis() {
 
 function criarFinalizacao() {
     let final = document.querySelector(".screen-3-4");
-
+    
     final.innerHTML += `
-    <div class="imagem-final">
+    <div class="imagem-final" onclick="acessarScreen2()">
     <img src="${urlImagem}" alt="">
     <p>${titulo}</p>
     </div>
-    <button id="acessarQuizz">Acessar Quizz</button>
-    <button id="voltarHome">Voltar pra home</button>
+    <button id="acessarQuizz" onclick="acessarScreen2()">Acessar Quizz</button>
+    <button id="voltarHome" onclick="voltarHome()">Voltar pra home</button>
     `
 }
 
 function validarCriacaoDasPerguntas() {
-
+    let cont=0;
     dados.questions = [];
 
     for (i = 1; i <= qtdPerguntas; i++) {
@@ -176,17 +177,27 @@ function validarCriacaoDasPerguntas() {
 
             dados.questions.push(objPerguntas);
             console.log("Dados:", dados.questions);
-
-            prosseguirParaNiveis();
+            cont++;
+            console.log("Aumentou cont:");
 
         } else {
             alert(`Algo deu errado na pergunta ${i}! Por favor, preencha os dados corretamente.`);
         }
     }
+    console.log("cont:");
+    console.log(cont);
+    console.log("perguntas:");
+    console.log(qtdPerguntas);
+    
+    if(cont == qtdPerguntas){
+        prosseguirParaNiveis();
+        console.log("fui para nivel");
+    }
+    
 }
 
 function validarCriacaoDosNiveis() {
-
+    let contador = 0;
     let algumNivelZero = false;
     let teveErro = false;
 
@@ -221,25 +232,33 @@ function validarCriacaoDosNiveis() {
             console.log("check correto dos níveis");
             dados.levels.push(objNiveis);
             console.log("Objetos dos níveis:", objNiveis);
+            contador++;
         } else {
             alert(`Algo deu errado no nível ${i}! Por favor, preencha os dados corretamente.`)
             teveErro = true;
         }
     }
-    if (!teveErro) {
+    if (teveErro !== true) { //teveErro !== true
         console.log(dados);
+        console.log("if ok",contador);
+        //console.log("teste",teste);
+        console.log("post dos dados:");
         const promisse = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", dados);
-        promisse.then(resposta => {
-            console.log("Post concluído");
+        console.log("depois do post esperando");
+       // promisse.then(prosseguirParaFinalizacao);
+          promisse.then(resposta => {
+            console.log("Post concluído",resposta);
+            //console,log(resposta.id);
             console.log(`Dados:${dados}`);
 
             prosseguirParaFinalizacao();
         })
-        promisse.catch(erro => console.log("Houve um erro no post"))
+        promisse.catch(erro => console.log("Houve um erro no post"));
     }
 }
 
 function prosseguirParaNiveis() {
+    console.log("Cheguei nos niveis");
     document.querySelector('.screen-3-2').classList.add('hidden');
     document.querySelector('.screen-3-3').classList.remove('hidden');
 
@@ -247,6 +266,7 @@ function prosseguirParaNiveis() {
 }
 
 function prosseguirParaFinalizacao() {
+    console.log("Cheguei finalização!!!!");
     document.querySelector('.screen-3-3').classList.add('hidden');
     document.querySelector('.screen-3-4').classList.remove('hidden');
 
@@ -300,7 +320,12 @@ function listaTodosQuizzes(resposta) {
 }
 function acessarScreen2() {
     document.querySelector(".screen-1").classList.add("hidden");
-    //INSERIR TELA 2
+    document.querySelector(".screen-3-4").classList.add("hidden");
+    document.querySelector(".screen-2").classList.remove("hidden");
+}
+
+function voltarHome(){
+    window.location.reload();
 }
 function error() {
     alert("erro");
