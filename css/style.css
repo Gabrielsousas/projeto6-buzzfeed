@@ -284,6 +284,7 @@ ion-icon{
 }
 
 .question {
+  word-wrap: break-word;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -298,10 +299,22 @@ ion-icon{
   line-height: 22px;
 }
 
-.card-question {
-  margin: 10px;
-}
 .question p {
+  word-wrap: break-word;
+  color: black;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.card-question p{
+  width: 329.9119873046875px;
+  margin: 10px;
+  word-wrap: break-word;
   color: black;
   font-family: Roboto;
   font-size: 13px;
@@ -311,7 +324,9 @@ ion-icon{
 }
 
 
+
 .question-title {
+  word-wrap: break-word;
   width: 688.16px;
   height: 137.99px;
   text-align: center;
