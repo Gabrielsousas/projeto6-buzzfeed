@@ -1,60 +1,60 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 .header {
-    background-color: #EC362D;
-    width: 100%;
-    height: 69px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    top: 0;
-    z-index: 2;
+  background-color: #ec362d;
+  width: 100%;
+  height: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  z-index: 2;
 }
 
 .header span {
-    font-family: Roboto;
-    font-weight: 700;
-    font-size: 37px;
-    line-height: 43px;
-    color: white;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 43px;
+  color: white;
 }
 
 body {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
 
 .criarQuizz {
-    height: 181px;
-    width: 73%;
-    border: dashed 1px #D4D4D4;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 181px;
+  width: 73%;
+  border: dashed 1px #d4d4d4;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .criarQuizz span {
-    width: 250px;
-    height: 107px;
-    color: #b9b9b9;
-    font-size: 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
+  width: 250px;
+  height: 107px;
+  color: #b9b9b9;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .todosQuizz, .seusQuizzes {
@@ -75,19 +75,19 @@ main {
 }
 
 ul {
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 li {
-    width: 340px;
-    height: 181px;
-    background-size: 100% 100%;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left: 5px;
-    margin-right: 5px;
+  width: 340px;
+  height: 181px;
+  background-size: 100% 100%;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .todosOsQuizzes .caixaQuizz, .seusQuizzes .caixaQuizz{
@@ -97,7 +97,26 @@ li {
     position: relative;
     margin-top: 14px;
     border-radius: 5px;
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(0, 0, 0, 1));
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 0, 0, 0),
+        rgba(255, 0, 0, 0),
+        rgba(0, 0, 0, 1)
+      );
+}
+.todosOsQuizzes .caixaQuizz {
+  width: 340px;
+  height: 181px;
+  display: flex;
+  position: relative;
+  margin-top: 14px;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
 }
 
 .todosOsQuizzes .caixaQuizz p, .seusQuizzes .caixaQuizz p{
@@ -128,34 +147,32 @@ ion-icon{
     display: flex;
 }
 .h1-screen1 {
-    font-family: Roboto;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-    color: black;
-    margin-left: 5px;
-
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: black;
+  margin-left: 5px;
 }
 
 .botaoCriarQuizz {
-    background-color: white;
-    color: #ec362d;
-    height: 40px;
-    width: 151px;
-    border-radius: 50px;
-    border: 1px;
-    border-color: #EC362D;
-    outline-style: dashed;
-    outline-color: #EC362D;
-    margin-bottom: 33px;
+  background-color: white;
+  color: #ec362d;
+  height: 40px;
+  width: 151px;
+  border-radius: 50px;
+  border: 1px;
+  border-color: #ec362d;
+  outline-style: dashed;
+  outline-color: #ec362d;
+  margin-bottom: 33px;
 
-    font-weight: 400;
-    font-size: 21px;
+  font-weight: 400;
+  font-size: 21px;
 }
 
-
 /*---------------------- Inicio da formatação de tela 2 ------------------------------------------*/
-.screen-2{
+.screen-2 {
   height: 227px;
   margin-top: 69px;
   position: relative;
@@ -189,245 +206,255 @@ ion-icon{
   font-weight: 400;
 }
 
-.selected-quizz{
+.selected-quizz {
   margin: 0 auto;
 }
 
-.question {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    height: 436px;
-    width: 375px;
-    box-shadow: 0px 0px 10px 0px #0000000D;
-    color: white;
-    font-family: Roboto;
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 22px;
+.apply-opacity {
+  opacity: 0.3;
 }
 
-.card-question{
-    margin: 10px;  
+.white-layer {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.question {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  height: 676px;
+  width: 759px;
+  box-shadow: 0px 0px 10px 0px #0000000d;
+  color: white;
+  font-family: Roboto;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.card-question {
+  margin: 10px;
 }
 .question p {
-    color: black;
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 15px;
-    text-align: left;
+  color: black;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: left;
 }
 
-.question-title{
-    height: 89px;
-    width: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
+
+.question-title {
+  width: 688.16px;
+  height: 137.99px;
+  text-align: center;
+  line-height: 137.99px;
+  font-family: Roboto;
+  font-size: 23px;
+  font-weight: 700;
 }
 
-.question img{
-    height: 113px;
-    width: 163px;  
+.question img {
+  margin-bottom: 10px;
+  height: 175.20184326171875px;
+  width: 329.9119873046875px;
 }
-
 
 /*---------------------- Fim da formatação de tela 2 ------------------------------------------*/
-
-
-
 
 /*---------------------- Início da formatação de tela 3 (criação de quiz) ----------------------*/
 
 .h2-screen3 {
-    font-weight: 700;
-    font-size: 20px;
-    font-family: Roboto;
-    line-height: 23px;
-    margin-bottom: 23px;
-    text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Roboto;
+  line-height: 23px;
+  margin-bottom: 23px;
+  text-align: center;
 }
 
 .formulario {
-    background-color: white;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    padding: 21px 0;
-    padding-left: 32px;
-    box-shadow: 0px 0px 10px 0px #0000000D;
+  background-color: white;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 21px 0;
+  padding-left: 32px;
+  box-shadow: 0px 0px 10px 0px #0000000d;
 }
 
 .h3-screen3 {
-    font-weight: 700;
-    font-size: 20px;
-    font-family: Roboto;
-    line-height: 23px;
-    text-align: left;
-    left: 0;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Roboto;
+  line-height: 23px;
+  text-align: left;
+  left: 0;
 }
 
 .formulario input {
-    width: 94%;
-    height: 46px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1;
+  width: 94%;
+  height: 46px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
 }
 
 .formulario ::placeholder {
-    color: #bababa;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 22px;
-    padding-left: 18px;
+  color: #bababa;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 22px;
+  padding-left: 18px;
 }
 
 .screen-3 button {
-    background-color: #EC362D;
-    width: 368px;
-    height: 54px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-    display: flex;
-    margin: 29px auto 60px auto;
+  background-color: #ec362d;
+  width: 368px;
+  height: 54px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  margin: 29px auto 60px auto;
 
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-    line-height: 25px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  line-height: 25px;
 }
 
 .caixa-pergunta {
-    background-color: white;
-    width: 600px;
-    height: 74px;
-    margin-top: 24px;
-    box-shadow: 0px 0px 10px 0px #0000000D;
-    display: flex;
-    padding: 0 34px;
-    align-items: center;
-    justify-content: space-between;
+  background-color: white;
+  width: 600px;
+  height: 74px;
+  margin-top: 24px;
+  box-shadow: 0px 0px 10px 0px #0000000d;
+  display: flex;
+  padding: 0 34px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .caixa-pergunta ion-icon {
-    font-size: 23px;
+  font-size: 23px;
 }
 
 .caixa-nivel {
-    background-color: white;
-    width: 600px;
-    height: 74px;
-    margin-top: 24px;
-    box-shadow: 0px 0px 10px 0px #0000000D;
-    display: flex;
-    padding: 0 34px;
-    align-items: center;
-    justify-content: space-between;
+  background-color: white;
+  width: 600px;
+  height: 74px;
+  margin-top: 24px;
+  box-shadow: 0px 0px 10px 0px #0000000d;
+  display: flex;
+  padding: 0 34px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .caixa-nivel ion-icon {
-    font-size: 23px;
+  font-size: 23px;
 }
 
 .caixa-formulario {
-    background-color: white;
-    box-shadow: 0px 0px 10px 0px #0000000D;
-    width: 600px;
-    margin-top: 24px;
-    padding-left: 34px;
-    padding-top: 17px;
-    padding-bottom: 27px;
-    gap: 14px;
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px #0000000d;
+  width: 600px;
+  margin-top: 24px;
+  padding-left: 34px;
+  padding-top: 17px;
+  padding-bottom: 27px;
+  gap: 14px;
 }
 
 .caixa-formulario input {
-    width: 94%;
-    height: 46px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1;
-    padding-left: 10px;
-    margin: 5px 0;
+  width: 94%;
+  height: 46px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  padding-left: 10px;
+  margin: 5px 0;
 }
 
 .caixa-formulario h3 {
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .caixa-formulario :nth-child(9),
 .caixa-formulario :nth-child(11) {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .caixa-formulario .nivel-descricao {
-    width: 94%;
-    height: 177px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    margin: 5px 0;
+  width: 94%;
+  height: 177px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  margin: 5px 0;
 }
 
 .imagem-final {
-    display: flex;
-    height: 266px;
-    width: 500px;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  height: 266px;
+  width: 500px;
+  justify-content: center;
+  position: relative;
 }
 
 .screen-3-4 img {
-    min-width: 500px;
-    min-height: 266px;
-    max-width: 500px;
-    max-height: 266px;
-    border-radius: 5px;
-    z-index: -1;
+  min-width: 500px;
+  min-height: 266px;
+  max-width: 500px;
+  max-height: 266px;
+  border-radius: 5px;
+  z-index: -1;
 }
 
 .imagem-final {
-    border-radius: 5px;
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(0, 0, 0, 1));
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
 }
 
 .screen-3-4 p {
-    position: absolute;
-    color: white;
-    bottom: 15px;
-    left: 15px;
+  position: absolute;
+  color: white;
+  bottom: 15px;
+  left: 15px;
 }
 
 #acessarQuizz {
-    width: 221px;
+  width: 221px;
 }
 
 #voltarHome {
-    width: 221px;
-    margin-top: -40px;
-    color: #818181;
-    background-color: #FAFAFA;
-    border: none;
-    box-shadow: none;
+  width: 221px;
+  margin-top: -40px;
+  color: #818181;
+  background-color: #fafafa;
+  border: none;
+  box-shadow: none;
 }
-
-
-
-
 
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/
 
 .hidden {
-    display: none;
+  display: none;
 }
-
 
 @media (max-width: 375px) {
     .h1-screen1 {

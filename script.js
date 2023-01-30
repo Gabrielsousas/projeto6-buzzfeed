@@ -12,7 +12,7 @@ let titulo;
 let urlImagem;
 let qtdPerguntas;
 let qtdNiveis;
-let quizzId = 1;
+let quizzId = 19379;
 let perguntas = [];
 const dados = {
     title: '',
@@ -422,13 +422,14 @@ function error() {
 //Scripts-Gabriel---------------------------------------------------------------
 
 mostrarQuizz()
+
 function mostrarQuizz(){
   axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`)
   .then(response => {
     console.log(response.data);
     document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
     document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
-    perguntas = shuffle(response.data.questions);
+    perguntas = response.data.questions;
     mostrarPerguntas(response);
   })
   .catch(error => {
@@ -440,21 +441,24 @@ function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
   return array;
 }
-
+const quizzOnScreen = document.querySelector('.selected-quizz')
 function mostrarPerguntas(response){
-    const quizzOnScreen = document.querySelector('.selected-quizz')
+    
     for (let i = 0; i < perguntas.length; i++){
     let color = perguntas[i].color;
     quizzOnScreen.innerHTML += `
         <div class="question">
             <h2 class="question-title color${i}">${perguntas[i].title}</h2>
         </div>
+        <div class="white-layer"></div>
       `
       alterarCor(i,color)
+        shuffle(perguntas[i].answers);
+
       for (let j= 0; j < perguntas[i].answers.length; j++){
         let element = document.querySelectorAll('.question')
         element[i].innerHTML += `
-        <div class="card-question">
+        <div onclick="selecionarResposta${i}()" class="card-question q${i}">
         <img src=${perguntas[i].answers[j].image}>
         <p>${perguntas[i].answers[j].text}</p>
         </div>
@@ -463,12 +467,82 @@ function mostrarPerguntas(response){
   }
 }
 
+
+function selecionarResposta0() {
+    let clicado = false;
+    let optionsQuizz = document.querySelectorAll('.q0');
+  
+    optionsQuizz.forEach(function(opacity) {
+      opacity.addEventListener('click', function() {
+        if (!clicado) {
+          clicado = true;
+          optionsQuizz.forEach(function(removeOpacity) {
+            removeOpacity.classList.add('apply-opacity');
+            removeOpacity.style.pointerEvents = 'none';
+          });
+          opacity.classList.remove('apply-opacity');
+        }
+      });
+    });
+  }
+
+function selecionarResposta1() {
+    let clicado = false;
+    let optionsQuizz = document.querySelectorAll('.q1');
+  
+    optionsQuizz.forEach(function(opacity) {
+      opacity.addEventListener('click', function() {
+        if (!clicado) {
+          clicado = true;
+          optionsQuizz.forEach(function(removeOpacity) {
+            removeOpacity.classList.add('apply-opacity');
+            removeOpacity.style.pointerEvents = 'none';
+          });
+          opacity.classList.remove('apply-opacity');
+        }
+      });
+    });
+  }
+  
+
+  function selecionarResposta2() {
+    let clicado = false;
+    let optionsQuizz = document.querySelectorAll('.q2');
+  
+    optionsQuizz.forEach(function(opacity) {
+      opacity.addEventListener('click', function() {
+        if (!clicado) {
+          clicado = true;
+          optionsQuizz.forEach(function(removeOpacity) {
+            removeOpacity.classList.add('apply-opacity');
+            removeOpacity.style.pointerEvents = 'none';
+          });
+          opacity.classList.remove('apply-opacity');
+        }
+      });
+    });
+  }
+
+  function selecionarResposta3() {
+    let clicado = false;
+    let optionsQuizz = document.querySelectorAll('.q3');
+  
+    optionsQuizz.forEach(function(opacity) {
+      opacity.addEventListener('click', function() {
+        if (!clicado) {
+          clicado = true;
+          optionsQuizz.forEach(function(removeOpacity) {
+            removeOpacity.classList.add('apply-opacity');
+            removeOpacity.style.pointerEvents = 'none';
+          });
+          opacity.classList.remove('apply-opacity');
+        }
+      });
+    });
+  }
+
 function alterarCor(elemento, cor){
     document.querySelector(`.color${elemento}`).style.backgroundColor = `${cor}`;
 }
 
-
-function inserirPerguntas(){
-    document.querySelector('.question').innerHTML += ""
-}
 //Final-de-Scripts-Gabriel---------------------------------------------------------------
