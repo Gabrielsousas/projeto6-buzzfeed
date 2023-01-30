@@ -14,7 +14,7 @@ let qtdPerguntas;
 let qtdNiveis;
 let quizzId = 19379;
 let perguntas = [];
-let pontos;
+let pontos = 0;
 const dados = {
     title: '',
     image: '',
@@ -475,8 +475,8 @@ function listaTodosQuizzes(resposta) {
 
     }
 }
-function acessarScreen2(dats) {
-    quizzId = dats.getAttribute("data-quizz")
+function acessarScreen2(data) {
+    quizzId = data.getAttribute("data-quizz")
     console.log("quizId",quizzId)
     document.querySelector(".screen-1").classList.add("hidden");
     document.querySelector(".screen-3-4").classList.add("hidden");
@@ -572,17 +572,18 @@ selecionarResposta2()
 selecionarResposta3()
 }
 
-
+let algo
 function selecionarResposta0() {
     let clicado = false;
     let optionsQuizz = document.querySelectorAll('.q0');
     console.log(optionsQuizz)
   
     optionsQuizz.forEach(function(opacity) {
-      opacity.addEventListener('click', function(event) {
+      opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
           color0()
+            calcularPontos(opacity)
           scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
@@ -594,6 +595,14 @@ function selecionarResposta0() {
     });
   }
   
+
+function calcularPontos(opacity){
+    const hasClass = opacity.lastElementChild.classList.contains("true");
+    if (hasClass){
+      pontos += 1
+    }
+}
+
 
   function color0(){
     let falseElements = document.querySelectorAll('.q0 .false');
@@ -625,6 +634,7 @@ function selecionarResposta1() {
         if (!clicado) {
           clicado = true;
           color1()
+          calcularPontos(opacity)
           scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
@@ -657,6 +667,7 @@ function selecionarResposta1() {
         if (!clicado) {
           clicado = true;
           color2()
+          calcularPontos(opacity)
           scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
@@ -689,6 +700,7 @@ function selecionarResposta1() {
         if (!clicado) {
           clicado = true;
           color3()
+          calcularPontos(opacity)
           scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
