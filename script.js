@@ -212,11 +212,11 @@ function criarFinalizacao() {
     let final = document.querySelector(".screen-3-4");
     
     final.innerHTML += `
-    <div class="imagem-final" onclick="acessarScreen2()">
+    <div class="imagem-final" data-quizz="${guardaResposta.id}" onclick="acessarScreen2(this)">
     <img src="${urlImagem}" alt="">
     <p>${titulo}</p>
     </div>
-    <button id="acessarQuizz" onclick="acessarScreen2()">Acessar Quizz</button>
+    <button data-quizz="${guardaResposta.id}" id="acessarQuizz" onclick="acessarScreen2(this)">Acessar Quizz</button>
     <button id="voltarHome" onclick="voltarHome()">Voltar pra home</button>
     `
 }
