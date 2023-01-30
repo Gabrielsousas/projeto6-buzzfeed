@@ -124,7 +124,6 @@ main {
 
 .todosOsQuizzes,
 .listaSeusQuizzes {
-  min-width: 375px;
   max-width: 1051px;
   height: 100%;
   margin-top: 35px;
@@ -288,20 +287,7 @@ ion-icon {
   width: 100%;
 }
 
-.question {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  height: 676px;
-  width: 759px;
-  box-shadow: 0px 0px 10px 0px #0000000d;
-  color: white;
-  font-family: Roboto;
-  font-size: 19px;
-  font-weight: 400;
-  margin: 15px 0;
-}
+
 
 .question p {
   word-wrap: break-word;
@@ -342,6 +328,21 @@ ion-icon {
   margin-bottom: 10px;
   height: 175.20184326171875px;
   width: 329.9119873046875px;
+}
+
+.question {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0px 0px 10px 0px #0000000d;
+  color: white;
+  font-family: Roboto;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 15px 0;  
+  height: 676px;
+  width: 759px;
 }
 
 /*---------------------- Fim da formatação de tela 2 ------------------------------------------*/
@@ -557,6 +558,15 @@ ion-icon {
 }
 
 @media (max-width: 375px) {
+
+  .question {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .h1-screen1 {
     margin-left: 18px;
   }
@@ -582,22 +592,21 @@ ion-icon {
   .header span {
     max-width: 340px;
   }
-.question {
-  max-width: 375px;
-}
+
+
 
 
   .question-title {
     line-height: 89px;
     height: 89px;
-    width: 100%;
+    max-width: 375px;
     text-align: center;
   }
 
 
   .question img {
     height: 113px;
-    width: 163px;
+    max-width: 163px;
   }
 
   .card-question p {
@@ -618,13 +627,13 @@ ion-icon {
 
   .imagem-final-Quizz {
     flex-direction: column;
-    height: 500px;
-    width: 375px;
+    max-height: 500px;
+    max-width: 375px;
   }
 
   .imagem-final-Quizz p {
     min-height: 96px;
-    width: 340px;
+    max-width: 340px;
     word-wrap: break-word;
     font-family: Roboto;
     font-size: 17px;
@@ -633,14 +642,14 @@ ion-icon {
   }
 
   .imagem-final-Quizz img {
-    height: 255px;
-    width: 340px;
+    max-height: 255px;
+    max-width: 340px;
     margin-bottom: 10px;
   }
 
     .screen-3 button {
-      width: 323px;
-      height: 54px;
+      max-width: 323px;
+      max-height: 54px;
     }
     .formulario {
       width: 98%;
@@ -675,4 +684,6 @@ ion-icon {
       max-width: 340px;
       max-height: 181px;
     }
+
+
 }
