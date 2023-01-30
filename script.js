@@ -444,7 +444,7 @@ function listaTeste(resposta){
     console.log("teste2",teste2);
     console.log(teste2.image);
     ul2.innerHTML += `
-        <li onclick="acessarScreen2()">
+        <li data-quizz="${teste2.id}" onclick="acessarScreen2(this)">
             <div class="caixaQuizz">                
                 <p>${teste2.title}</p>
             </div>
@@ -486,6 +486,8 @@ function listaTodosQuizzes(resposta) {
     }
 }
 function acessarScreen2(data) {
+    console.log("Entrou na função");
+    console.log(data);
     quizzId = data.getAttribute("data-quizz")
     console.log("quizId",quizzId)
     document.querySelector(".screen-1").classList.add("hidden");
