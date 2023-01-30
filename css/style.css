@@ -161,6 +161,7 @@ li {
       );
 }
 .todosOsQuizzes .caixaQuizz {
+    z-index: 1;
   width: 340px;
   height: 181px;
   display: flex;
@@ -173,6 +174,9 @@ li {
     rgba(255, 0, 0, 0),
     rgba(0, 0, 0, 1)
   );
+}
+.todos, .seus{
+    z-index: 0;
 }
 
 .todosOsQuizzes .caixaQuizz p, .seusQuizzes .caixaQuizz p{
@@ -188,7 +192,9 @@ li {
     z-index: 1;
     color: white;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    overflow: hidden;
 }
 ion-icon{
     width: 31px;

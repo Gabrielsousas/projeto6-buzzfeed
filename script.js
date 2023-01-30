@@ -506,13 +506,6 @@ function reiniciarQuizzAposFinal() {
     const limpaTela = document.querySelector(".screen-2-1");
     const limpaTela2 = document.querySelector(".selected-quizz");
     window.scrollTo(0, 0);
-    limpaTela.innerHTML =` 
-    <p class="titulo-quizz"></p>
-    <div class="black-layer"></div>
-    `;
-    limpaTela2.innerHTML =" ";
-    counter = 0;
-    acessarScreen2(backup);
 }
 function voltarHome(){
     window.location.reload();
@@ -581,9 +574,7 @@ function mostrarQuizz(){
   .then(response => {
     console.log("then");
     console.log(response.data);
-    console.log("then5");
     document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
-    console.log("then1");
     document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
     console.log("then2");
     perguntas = response.data.questions;
