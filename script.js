@@ -212,11 +212,11 @@ function criarFinalizacao() {
     let final = document.querySelector(".screen-3-4");
     
     final.innerHTML += `
-    <div class="imagem-final" data-quizz="${guardaResposta.id}" onclick="acessarScreen2(this)">
+    <div class="imagem-final" onclick="acessarScreen2()">
     <img src="${urlImagem}" alt="">
     <p>${titulo}</p>
     </div>
-    <button data-quizz="${guardaResposta.id}" id="acessarQuizz" onclick="acessarScreen2(this)">Acessar Quizz</button>
+    <button id="acessarQuizz" onclick="acessarScreen2()">Acessar Quizz</button>
     <button id="voltarHome" onclick="voltarHome()">Voltar pra home</button>
     `
 }
@@ -506,6 +506,13 @@ function reiniciarQuizzAposFinal() {
     const limpaTela = document.querySelector(".screen-2-1");
     const limpaTela2 = document.querySelector(".selected-quizz");
     window.scrollTo(0, 0);
+    limpaTela.innerHTML =` 
+    <p class="titulo-quizz"></p>
+    <div class="black-layer"></div>
+    `;
+    limpaTela2.innerHTML =" ";
+    counter = 0;
+    acessarScreen2(backup);
 }
 function voltarHome(){
     window.location.reload();
@@ -574,7 +581,9 @@ function mostrarQuizz(){
   .then(response => {
     console.log("then");
     console.log(response.data);
+    console.log("then5");
     document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
+    console.log("then1");
     document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
     console.log("then2");
     perguntas = response.data.questions;
