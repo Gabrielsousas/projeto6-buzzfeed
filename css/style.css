@@ -13,7 +13,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
 }
 
 .header span {
@@ -199,7 +199,8 @@ li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  overflow: hidden;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 ion-icon {
   width: 31px;
@@ -269,6 +270,8 @@ ion-icon {
   color: white;
   font-size: 39px;
   font-weight: 400;
+  word-break: break-word;
+  overflow-y: hidden;
 }
 
 .selected-quizz {
@@ -634,4 +637,42 @@ ion-icon {
     width: 340px;
     margin-bottom: 10px;
   }
+
+    .screen-3 button {
+      width: 323px;
+      height: 54px;
+    }
+    .formulario {
+      width: 98%;
+    
+    }
+    .formulario ::placeholder {
+      color: #bababa;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      padding-left: 18px;
+    }
+    .caixa-pergunta {
+      width: 95%;
+    }
+    .caixa-nivel {
+      width: 95%;
+    }
+    .caixa-formulario {
+      width: 95%;
+    }
+    .imagem-final {
+
+      height: 181px;
+      width: 340px;
+    }
+    
+    .screen-3-4 img {
+      min-width: 340px;
+      min-height: 181px;
+      max-width: 340px;
+      max-height: 181px;
+    }
 }
