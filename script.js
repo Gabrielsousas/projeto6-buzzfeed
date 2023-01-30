@@ -1,7 +1,12 @@
 
 let guardaTodosQuizzes = {};
+let guardaSeusQuizzes = {};
 let guardaResposta = {};
 let listaIds=[];
+let indice=0;
+let indice2=0;
+let listaIdsInicial=[];
+let pegaSeusQuizzes=[];
 let lista;
 let titulo;
 let urlImagem;
@@ -16,6 +21,81 @@ const dados = {
     levels: []
 }
 let counter = 0;
+const objetoTeste ={
+	id: 1,
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
+tratamentoStorage();
+
+
+//listaIdsInicial.forEach(element => console.log("oiii",element));
+//pegaSeusQuizzesServidor();
+testeSeusQuizz();
 pegaTodosQuizzesServidor();
 
 // Scripts Guilherme ----------------------------------------------------------
@@ -308,6 +388,63 @@ function checkUrl(str) {
 
 // Final de Scripts Guilherme -------------------------------------------------
 
+function tratamentoStorage(){const pegaListaStorage = localStorage.getItem("lista");
+    console.log("Mostra storage real: ",pegaListaStorage);
+    if(pegaListaStorage !== null){
+        const dadosSerializados = JSON.stringify(pegaListaStorage);
+        const dadosDeserializados = JSON.parse(dadosSerializados);
+        //console.log("Mostra dados real: ",dadosSerializados);
+        console.log("Mostra dados real: ",dadosDeserializados);
+        console.log("Mostra dados real: ",dadosDeserializados.length);
+        let listaProvisoria = dadosDeserializados.split(`"`);
+        console.log("lista ids: ",listaProvisoria);
+        console.log("lista ids: ",listaProvisoria.length);
+        let contLista = 0;
+        for(let i=0; i<listaProvisoria.length; i++){
+            
+            if(listaProvisoria[i].length>0){
+                listaIdsInicial[contLista] = listaProvisoria[i];
+                contLista++;
+            }
+        }
+        console.log("lista ids FINAL: ",listaIdsInicial);
+        document.querySelector(".criarQuizz").classList.add("hidden");
+    }
+    else{
+        document.querySelector(".seusQuizzes").classList.add("hidden");
+    }
+
+}
+
+function testeSeusQuizz(){
+    listaIdsInicial.forEach(element => pegaSeusQuizz());
+}
+function pegaSeusQuizz(){
+    const pegaQuiz = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${listaIdsInicial[indice]}`);
+    indice++;
+    pegaQuiz.then(listaTeste);
+    pegaQuiz.catch(error);
+    
+}
+
+function listaTeste(resposta){
+    const ul2 = document.querySelector(".seus");
+    const teste2 = resposta.data;
+    console.log("teste2",teste2);
+    console.log(teste2.image);
+    ul2.innerHTML += `
+        <li onclick="acessarScreen2()">
+            <div class="caixaQuizz">                
+                <p>${teste2.title}</p>
+            </div>
+        </li>
+    `;
+    console.log("Indice",indice);
+    const backSeusLi2 = document.querySelector('.seus').children[indice2];
+    backSeusLi2.style.backgroundImage = `url(${teste2.image})`;
+    indice2++;
+}
+
 function pegaTodosQuizzesServidor() {
     const pegaTodosQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
     pegaTodosQuizzes.then(listaTodosQuizzes);
@@ -317,7 +454,9 @@ function pegaTodosQuizzesServidor() {
 function listaTodosQuizzes(resposta) {
     guardaTodosQuizzes = {};
     guardaTodosQuizzes = resposta.data;
-    const listaQuiz = document.querySelector('ul');
+    console.log("guarda",guardaTodosQuizzes);
+    console.log("resposta",resposta);
+    const listaQuiz = document.querySelector('.todos');
     listaQuiz.innerHTML = '';
     console.log(guardaTodosQuizzes);
     for (let i = 0; i < guardaTodosQuizzes.length; i++) {
@@ -330,7 +469,7 @@ function listaTodosQuizzes(resposta) {
         `;
 
         listaQuiz.innerHTML += template;
-        const backLi = document.querySelector('ul').children[i];
+        const backLi = document.querySelector('.todos').children[i];
         backLi.style.backgroundImage = `url(${guardaTodosQuizzes[i].image})`;
 
     }
@@ -339,15 +478,42 @@ function acessarScreen2() {
     document.querySelector(".screen-1").classList.add("hidden");
     document.querySelector(".screen-3-4").classList.add("hidden");
     document.querySelector(".screen-2").classList.remove("hidden");
+    window.scrollTo(0, 0);
 }
-
+function reiniciarQuizzAposFinal() {
+    document.querySelector(".screen2-2").classList.add("hidden");
+    window.scrollTo(0, 0);
+}
 function voltarHome(){
     window.location.reload();
 }
 function error() {
     alert("erro");
 }
-
+function finalizouQuizz(){ //Função que aguarda 2s e chama tela de finalização do Quizz
+    setTimeout(criarFinalizacaoQuizz, 2000);
+}
+function criarFinalizacaoQuizz(){
+    let finalQuiz = document.querySelector(".screen2-2");
+    finalQuiz.classList.remove("hidden");
+    finalQuiz.scrollIntoView();
+    let quizzSelecionado = objetoTeste;
+    console.log(quizzSelecionado);
+    let urlImagemQuizz = quizzSelecionado.image;
+    finalQuiz.innerHTML += `
+    <div class="cabecaFinalQuizz">
+        <h1>X% de acerto: ${quizzSelecionado.levels[0].title}</h1>
+    </div>
+    <div class="imagem-final-Quizz">
+        <img src="${quizzSelecionado.image}" alt="">
+     <p>${quizzSelecionado.levels[0].text}</p>
+    </div>
+    <div class="botoesFinalQuizz">
+        <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+        <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+    </div>
+    `
+}
 
 //Scripts-Gabriel---------------------------------------------------------------
 

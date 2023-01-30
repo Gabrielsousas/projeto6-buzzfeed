@@ -21,13 +21,23 @@
     <section class="criarQuizz">
       <span>Você não criou nenhum quizz ainda :(</span>
       <button class="botaoCriarQuizz" onclick="criarQuizz()">Criar Quizz</button>
+    </section>    
+    <section class="seusQuizzes">
+      <div class="listaSeusQuizzes">
+        <div class="plus">
+          <h1 class="h1-screen1">Seus Quizzes</h1>
+          <ion-icon onclick="criarQuizz()" name="add-circle"></ion-icon>
+        </div>
+        <ul class="seus"></ul>
+      </div>
     </section>
     <section class="todosQuizz">
       <div class="todosOsQuizzes">
         <h1 class="h1-screen1">Todos os Quizzes</h1>
-        <ul></ul>
+        <ul class="todos"></ul>
       </div>
     </section>
+    
   </main>
   <div class="screen-2 hidden">
     <section class="screen-2-1">
@@ -36,6 +46,8 @@
     </section>
     <main class="selected-quizz">
     </main>
+    <section class="screen2-2 hidden">
+    </section>
   </div>
   <main class="screen-3">
     <section class="screen-3-1 hidden">
