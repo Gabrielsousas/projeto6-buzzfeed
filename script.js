@@ -20,6 +20,8 @@ const dados = {
     questions: [],
     levels: []
 }
+//VARIAVEIS PROVISÓRIAS
+let porcentagem=50;
 const objetoTeste ={
 	id: 1,
 	title: "Título do quizz",
@@ -86,9 +88,17 @@ const objetoTeste ={
 			image: "https://http.cat/412.jpg",
 			text: "Descrição do nível 2",
 			minValue: 50
+		},
+        {
+			title: "Título do nível 3",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 3",
+			minValue: 80
 		}
 	]
 }
+
+console.log("Tamanho levels: ",objetoTeste.levels.length)
 tratamentoStorage();
 
 
@@ -498,20 +508,46 @@ function criarFinalizacaoQuizz(){
     finalQuiz.scrollIntoView();
     let quizzSelecionado = objetoTeste;
     console.log(quizzSelecionado);
-    let urlImagemQuizz = quizzSelecionado.image;
-    finalQuiz.innerHTML += `
-    <div class="cabecaFinalQuizz">
-        <h1>X% de acerto: ${quizzSelecionado.levels[0].title}</h1>
-    </div>
-    <div class="imagem-final-Quizz">
-        <img src="${quizzSelecionado.image}" alt="">
-     <p>${quizzSelecionado.levels[0].text}</p>
-    </div>
-    <div class="botoesFinalQuizz">
-        <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
-        <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
-    </div>
-    `
+    let tamanho = quizzSelecionado.levels.length;
+    let verifica = 0;
+    let i;
+    for(i = 0; i< tamanho - 1; i++){
+        if(porcentagem>=quizzSelecionado.levels[i].minValue && porcentagem<quizzSelecionado.levels[i+1].minValue){
+            finalQuiz.innerHTML = `
+            <div class="cabecaFinalQuizz">
+                <h1>X% de acerto: ${quizzSelecionado.levels[i].title}</h1>
+            </div>
+            <div class="imagem-final-Quizz">
+                <img src="${quizzSelecionado.levels[i].image}" alt="">
+             <p>${quizzSelecionado.levels[i].text}</p>
+            </div>
+            <div class="botoesFinalQuizz">
+                <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+                <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+            </div>
+            `;
+            verifica++;
+        }
+        
+        
+    }
+    console.log("i:",i);
+    if (verifica===0){
+        finalQuiz.innerHTML = `
+        <div class="cabecaFinalQuizz">
+            <h1>X% de acerto: ${quizzSelecionado.levels[i].title}</h1>
+        </div>
+        <div class="imagem-final-Quizz">
+            <img src="${quizzSelecionado.levels[i].image}" alt="">
+         <p>${quizzSelecionado.levels[i].text}</p>
+        </div>
+        <div class="botoesFinalQuizz">
+            <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+            <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+        </div>
+        `;
+    }
+   
 }
 
 //Scripts-Gabriel---------------------------------------------------------------

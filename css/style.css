@@ -161,6 +161,7 @@ li {
       );
 }
 .todosOsQuizzes .caixaQuizz {
+    z-index: 1;
   width: 340px;
   height: 181px;
   display: flex;
@@ -174,7 +175,9 @@ li {
     rgba(0, 0, 0, 1)
   );
 }
-
+.todos{
+    z-index: -1;
+}
 .todosOsQuizzes .caixaQuizz p, .seusQuizzes .caixaQuizz p{
     font-family: 'Roboto';
     font-weight: 400;
@@ -185,10 +188,12 @@ li {
     position: absolute;
     bottom: 6px;
     left: 17px;
-    z-index: 1;
+    z-index: 0;
     color: white;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    overflow: hidden;
 }
 ion-icon{
     width: 31px;
