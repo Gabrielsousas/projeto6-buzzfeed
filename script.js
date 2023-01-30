@@ -15,6 +15,7 @@ const dados = {
     questions: [],
     levels: []
 }
+let counter = 0;
 pegaTodosQuizzesServidor();
 
 // Scripts Guilherme ----------------------------------------------------------
@@ -387,24 +388,32 @@ function mostrarPerguntas(response){
       for (let j= 0; j < perguntas[i].answers.length; j++){
         let element = document.querySelectorAll('.question')
         element[i].innerHTML += `
-        <div onclick="selecionarResposta${i}()" class="card-question q${i}">
-        <img src=${perguntas[i].answers[j].image}>
-        <p>${perguntas[i].answers[j].text}</p>
+        <div" class="card-question q${i}">
+        <img class="${perguntas[i].answers[j].isCorrectAnswer}" src=${perguntas[i].answers[j].image}>
+        <p class="${perguntas[i].answers[j].isCorrectAnswer}">${perguntas[i].answers[j].text}</p>
         </div>
         `
+
       }
   }
+selecionarResposta0()
+selecionarResposta1()
+selecionarResposta2()
+selecionarResposta3()
 }
 
 
 function selecionarResposta0() {
     let clicado = false;
     let optionsQuizz = document.querySelectorAll('.q0');
+    console.log(optionsQuizz)
   
     optionsQuizz.forEach(function(opacity) {
-      opacity.addEventListener('click', function() {
+      opacity.addEventListener('click', function(event) {
         if (!clicado) {
           clicado = true;
+          color0()
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -414,6 +423,28 @@ function selecionarResposta0() {
       });
     });
   }
+  
+
+  function color0(){
+    let falseElements = document.querySelectorAll('.q0 .false');
+    let trueElements = document.querySelectorAll('.q0 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
+function scrollToNextElement(){
+    const element = document.querySelector(`.color${counter+1}`);
+
+    setTimeout(function() {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }, 2000);
+    counter++
+}
 
 function selecionarResposta1() {
     let clicado = false;
@@ -423,6 +454,8 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color1()
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -433,6 +466,17 @@ function selecionarResposta1() {
     });
   }
   
+  function color1(){
+    let falseElements = document.querySelectorAll('.q1 .false');
+    let trueElements = document.querySelectorAll('.q1 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
 
   function selecionarResposta2() {
     let clicado = false;
@@ -442,6 +486,8 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color2()
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -452,6 +498,18 @@ function selecionarResposta1() {
     });
   }
 
+  function color2(){
+    let falseElements = document.querySelectorAll('.q2 .false');
+    let trueElements = document.querySelectorAll('.q2 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
   function selecionarResposta3() {
     let clicado = false;
     let optionsQuizz = document.querySelectorAll('.q3');
@@ -460,6 +518,8 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color3()
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -469,6 +529,19 @@ function selecionarResposta1() {
       });
     });
   }
+
+  function color3(){
+    let falseElements = document.querySelectorAll('.q3 .false');
+    let trueElements = document.querySelectorAll('.q3 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
 
 function alterarCor(elemento, cor){
     document.querySelector(`.color${elemento}`).style.backgroundColor = `${cor}`;
