@@ -14,6 +14,7 @@ let qtdPerguntas;
 let qtdNiveis;
 let quizzId = 19379;
 let perguntas = [];
+let pontos;
 const dados = {
     title: '',
     image: '',
@@ -461,7 +462,7 @@ function listaTodosQuizzes(resposta) {
     console.log(guardaTodosQuizzes);
     for (let i = 0; i < guardaTodosQuizzes.length; i++) {
         const template = `
-        <li onclick="acessarScreen2()">
+        <li data-quizz="${guardaTodosQuizzes[i].id}" onclick="acessarScreen2(this)">
             <div class="caixaQuizz">                
                 <p>${guardaTodosQuizzes[i].title}</p>
             </div>
@@ -474,11 +475,14 @@ function listaTodosQuizzes(resposta) {
 
     }
 }
-function acessarScreen2() {
+function acessarScreen2(dats) {
+    quizzId = dats.getAttribute("data-quizz")
+    console.log("quizId",quizzId)
     document.querySelector(".screen-1").classList.add("hidden");
     document.querySelector(".screen-3-4").classList.add("hidden");
     document.querySelector(".screen-2").classList.remove("hidden");
     window.scrollTo(0, 0);
+    mostrarQuizz()
 }
 function reiniciarQuizzAposFinal() {
     document.querySelector(".screen2-2").classList.add("hidden");
@@ -517,7 +521,7 @@ function criarFinalizacaoQuizz(){
 
 //Scripts-Gabriel---------------------------------------------------------------
 
-mostrarQuizz()
+
 
 function mostrarQuizz(){
   axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`)
@@ -668,7 +672,7 @@ function selecionarResposta1() {
     let falseElements = document.querySelectorAll('.q2 .false');
     let trueElements = document.querySelectorAll('.q2 .true');
 
-    falseElements.forEach(function(element) {Gabriel
+    falseElements.forEach(function(element) {
         element.style.color = 'red';
       });
       trueElements.forEach(function(element) {
