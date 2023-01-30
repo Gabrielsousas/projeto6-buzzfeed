@@ -20,7 +20,75 @@ const dados = {
     questions: [],
     levels: []
 }
-
+const objetoTeste ={
+	id: 1,
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
 tratamentoStorage();
 
 
@@ -409,15 +477,42 @@ function acessarScreen2() {
     document.querySelector(".screen-1").classList.add("hidden");
     document.querySelector(".screen-3-4").classList.add("hidden");
     document.querySelector(".screen-2").classList.remove("hidden");
+    window.scrollTo(0, 0);
 }
-
+function reiniciarQuizzAposFinal() {
+    document.querySelector(".screen2-2").classList.add("hidden");
+    window.scrollTo(0, 0);
+}
 function voltarHome(){
     window.location.reload();
 }
 function error() {
     alert("erro");
 }
-
+function finalizouQuizz(){ //Função que aguarda 2s e chama tela de finalização do Quizz
+    setTimeout(criarFinalizacaoQuizz, 2000);
+}
+function criarFinalizacaoQuizz(){
+    let finalQuiz = document.querySelector(".screen2-2");
+    finalQuiz.classList.remove("hidden");
+    finalQuiz.scrollIntoView();
+    let quizzSelecionado = objetoTeste;
+    console.log(quizzSelecionado);
+    let urlImagemQuizz = quizzSelecionado.image;
+    finalQuiz.innerHTML += `
+    <div class="cabecaFinalQuizz">
+        <h1>X% de acerto: ${quizzSelecionado.levels[0].title}</h1>
+    </div>
+    <div class="imagem-final-Quizz">
+        <img src="${quizzSelecionado.image}" alt="">
+     <p>${quizzSelecionado.levels[0].text}</p>
+    </div>
+    <div class="botoesFinalQuizz">
+        <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+        <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+    </div>
+    `
+}
 
 //Scripts-Gabriel---------------------------------------------------------------
 

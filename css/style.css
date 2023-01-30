@@ -35,7 +35,63 @@ main {
   margin-top: 100px;
   margin-bottom: 30px;
 }
+.screen2-2{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-bottom: 30px;
+}
 
+.screen2-2 img{
+    width: 364px;
+    height: 273px;
+}
+.screen2-2 p{
+    width: 328px;
+    height: 260px;
+    margin-left: 21px;
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 19px;
+}
+
+.cabecaFinalQuizz{
+    background-color: #EC362D;
+    display: flex;
+    text-align: center;
+    width: 727px;
+    height: 99px;
+    margin-bottom: 18px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.screen2-2 h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+.imagem-final-Quizz{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+}
+.botoesFinalQuizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
+    flex-direction: column;
+}
 .criarQuizz {
   height: 181px;
   width: 73%;
@@ -449,7 +505,27 @@ ion-icon{
   border: none;
   box-shadow: none;
 }
-
+#voltarHome2{
+    width: 220px;
+    height: 44px;
+    color: #818181;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 21px;
+    border: none;
+}
+#reiniciarQuizz{
+    width: 260px;
+    height: 52px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    margin-bottom: 16px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 21px;
+    color: white;
+    border: none;
+}
 /*---------------------- Final da formatação de tela 3 (criação de quiz) ----------------------*/
 
 .hidden {
