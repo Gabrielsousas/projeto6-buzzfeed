@@ -21,7 +21,12 @@ const dados = {
     questions: [],
     levels: []
 }
+let backup;
+let objeto = {};
+//VARIAVEIS PROVISÓRIAS
+let porcentagem;
 let counter = 0;
+let qntPergunta =0;
 const objetoTeste ={
 	id: 1,
 	title: "Título do quizz",
@@ -88,9 +93,17 @@ const objetoTeste ={
 			image: "https://http.cat/412.jpg",
 			text: "Descrição do nível 2",
 			minValue: 50
+		},
+        {
+			title: "Título do nível 3",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 3",
+			minValue: 80
 		}
 	]
 }
+
+console.log("Tamanho levels: ",objetoTeste.levels.length)
 tratamentoStorage();
 
 
@@ -434,7 +447,7 @@ function listaTeste(resposta){
     console.log("teste2",teste2);
     console.log(teste2.image);
     ul2.innerHTML += `
-        <li onclick="acessarScreen2()">
+        <li data-quizz="${teste2.id}" onclick="acessarScreen2(this)">
             <div class="caixaQuizz">                
                 <p>${teste2.title}</p>
             </div>
@@ -476,6 +489,10 @@ function listaTodosQuizzes(resposta) {
     }
 }
 function acessarScreen2(data) {
+    console.log("Entrou na função");
+    console.log(data);
+    backup=data;
+    console.log("backup",backup);
     quizzId = data.getAttribute("data-quizz")
     console.log("quizId",quizzId)
     document.querySelector(".screen-1").classList.add("hidden");
@@ -486,7 +503,16 @@ function acessarScreen2(data) {
 }
 function reiniciarQuizzAposFinal() {
     document.querySelector(".screen2-2").classList.add("hidden");
+    const limpaTela = document.querySelector(".screen-2-1");
+    const limpaTela2 = document.querySelector(".selected-quizz");
     window.scrollTo(0, 0);
+    limpaTela.innerHTML =` 
+    <p class="titulo-quizz"></p>
+    <div class="black-layer"></div>
+    `;
+    limpaTela2.innerHTML =" ";
+    counter = 0;
+    acessarScreen2(backup);
 }
 function voltarHome(){
     window.location.reload();
@@ -501,22 +527,48 @@ function criarFinalizacaoQuizz(){
     let finalQuiz = document.querySelector(".screen2-2");
     finalQuiz.classList.remove("hidden");
     finalQuiz.scrollIntoView();
-    let quizzSelecionado = objetoTeste;
+    let quizzSelecionado = objeto;
     console.log(quizzSelecionado);
-    let urlImagemQuizz = quizzSelecionado.image;
-    finalQuiz.innerHTML += `
-    <div class="cabecaFinalQuizz">
-        <h1>X% de acerto: ${quizzSelecionado.levels[0].title}</h1>
-    </div>
-    <div class="imagem-final-Quizz">
-        <img src="${quizzSelecionado.image}" alt="">
-     <p>${quizzSelecionado.levels[0].text}</p>
-    </div>
-    <div class="botoesFinalQuizz">
-        <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
-        <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
-    </div>
-    `
+    let tamanho = quizzSelecionado.levels.length;
+    let verifica = 0;
+    let i;
+    porcentagem = Math.round(((pontos/qntPergunta)*100));
+    console.log("Porcentagem:",porcentagem);
+    for(i = 0; i< tamanho - 1; i++){
+        if(porcentagem>=quizzSelecionado.levels[i].minValue && porcentagem<quizzSelecionado.levels[i+1].minValue){
+            finalQuiz.innerHTML = `
+            <div class="cabecaFinalQuizz">
+                <h1>${porcentagem}% de acerto: ${quizzSelecionado.levels[i].title}</h1>
+            </div>
+            <div class="imagem-final-Quizz">
+                <img src="${quizzSelecionado.levels[i].image}" alt="">
+             <p>${quizzSelecionado.levels[i].text}</p>
+            </div>
+            <div class="botoesFinalQuizz">
+                <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+                <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+            </div>
+            `;
+            verifica++;
+        }
+    }
+    console.log("i:",i);
+    if (verifica===0){
+        finalQuiz.innerHTML = `
+        <div class="cabecaFinalQuizz">
+            <h1>${porcentagem}% de acerto: ${quizzSelecionado.levels[i].title}</h1>
+        </div>
+        <div class="imagem-final-Quizz">
+            <img src="${quizzSelecionado.levels[i].image}" alt="">
+         <p>${quizzSelecionado.levels[i].text}</p>
+        </div>
+        <div class="botoesFinalQuizz">
+            <button id="reiniciarQuizz" onclick="reiniciarQuizzAposFinal()">Reiniciar Quizz</button>
+            <button id="voltarHome2" onclick="voltarHome()">Voltar pra home</button>
+        </div>
+        `;
+    }
+   
 }
 
 //Scripts-Gabriel---------------------------------------------------------------
@@ -524,12 +576,22 @@ function criarFinalizacaoQuizz(){
 
 
 function mostrarQuizz(){
+    console.log("Entrei no mostraQuiz");
   axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`)
   .then(response => {
+    console.log("then");
     console.log(response.data);
+    console.log("then5");
     document.querySelector('.titulo-quizz').innerHTML = `${response.data.title}`
+    console.log("then1");
     document.querySelector('.screen-2-1').innerHTML += `<img class="image-header" src="${response.data.image}">`
+    console.log("then2");
     perguntas = response.data.questions;
+    console.log("then3");
+    objeto= response.data;
+    console.log("Objeto:",objeto);
+    qntPergunta = response.data.questions.length;
+    console.log("Qnt perguntas:",qntPergunta);
     mostrarPerguntas(response);
   })
   .catch(error => {
@@ -622,7 +684,12 @@ function scrollToNextElement(){
     setTimeout(function() {
         element.scrollIntoView({ behavior: 'smooth' });
     }, 2000);
-    counter++
+    counter++;
+    console.log("Counter:",counter);
+    if(counter==qntPergunta){
+        finalizouQuizz();
+    }
+
 }
 
 function selecionarResposta1() {
