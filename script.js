@@ -668,7 +668,7 @@ function selecionarResposta1() {
     let falseElements = document.querySelectorAll('.q2 .false');
     let trueElements = document.querySelectorAll('.q2 .true');
 
-    falseElements.forEach(function(element) {
+    falseElements.forEach(function(element) {Gabriel
         element.style.color = 'red';
       });
       trueElements.forEach(function(element) {
