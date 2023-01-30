@@ -14,6 +14,7 @@ let qtdPerguntas;
 let qtdNiveis;
 let quizzId = 19379;
 let perguntas = [];
+let pontos = 0;
 const dados = {
     title: '',
     image: '',
@@ -22,6 +23,7 @@ const dados = {
 }
 //VARIAVEIS PROVISÓRIAS
 let porcentagem=50;
+let counter = 0;
 const objetoTeste ={
 	id: 1,
 	title: "Título do quizz",
@@ -470,7 +472,7 @@ function listaTodosQuizzes(resposta) {
     console.log(guardaTodosQuizzes);
     for (let i = 0; i < guardaTodosQuizzes.length; i++) {
         const template = `
-        <li onclick="acessarScreen2()">
+        <li data-quizz="${guardaTodosQuizzes[i].id}" onclick="acessarScreen2(this)">
             <div class="caixaQuizz">                
                 <p>${guardaTodosQuizzes[i].title}</p>
             </div>
@@ -483,11 +485,14 @@ function listaTodosQuizzes(resposta) {
 
     }
 }
-function acessarScreen2() {
+function acessarScreen2(data) {
+    quizzId = data.getAttribute("data-quizz")
+    console.log("quizId",quizzId)
     document.querySelector(".screen-1").classList.add("hidden");
     document.querySelector(".screen-3-4").classList.add("hidden");
     document.querySelector(".screen-2").classList.remove("hidden");
     window.scrollTo(0, 0);
+    mostrarQuizz()
 }
 function reiniciarQuizzAposFinal() {
     document.querySelector(".screen2-2").classList.add("hidden");
@@ -552,7 +557,7 @@ function criarFinalizacaoQuizz(){
 
 //Scripts-Gabriel---------------------------------------------------------------
 
-mostrarQuizz()
+
 
 function mostrarQuizz(){
   axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`)
@@ -589,24 +594,33 @@ function mostrarPerguntas(response){
       for (let j= 0; j < perguntas[i].answers.length; j++){
         let element = document.querySelectorAll('.question')
         element[i].innerHTML += `
-        <div onclick="selecionarResposta${i}()" class="card-question q${i}">
-        <img src=${perguntas[i].answers[j].image}>
-        <p>${perguntas[i].answers[j].text}</p>
+        <div" class="card-question q${i}">
+        <img class="${perguntas[i].answers[j].isCorrectAnswer}" src=${perguntas[i].answers[j].image}>
+        <p class="${perguntas[i].answers[j].isCorrectAnswer}">${perguntas[i].answers[j].text}</p>
         </div>
         `
+
       }
   }
+selecionarResposta0()
+selecionarResposta1()
+selecionarResposta2()
+selecionarResposta3()
 }
 
-
+let algo
 function selecionarResposta0() {
     let clicado = false;
     let optionsQuizz = document.querySelectorAll('.q0');
+    console.log(optionsQuizz)
   
     optionsQuizz.forEach(function(opacity) {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color0()
+            calcularPontos(opacity)
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -616,6 +630,36 @@ function selecionarResposta0() {
       });
     });
   }
+  
+
+function calcularPontos(opacity){
+    const hasClass = opacity.lastElementChild.classList.contains("true");
+    if (hasClass){
+      pontos += 1
+    }
+}
+
+
+  function color0(){
+    let falseElements = document.querySelectorAll('.q0 .false');
+    let trueElements = document.querySelectorAll('.q0 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
+function scrollToNextElement(){
+    const element = document.querySelector(`.color${counter+1}`);
+
+    setTimeout(function() {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }, 2000);
+    counter++
+}
 
 function selecionarResposta1() {
     let clicado = false;
@@ -625,6 +669,9 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color1()
+          calcularPontos(opacity)
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -635,6 +682,17 @@ function selecionarResposta1() {
     });
   }
   
+  function color1(){
+    let falseElements = document.querySelectorAll('.q1 .false');
+    let trueElements = document.querySelectorAll('.q1 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
 
   function selecionarResposta2() {
     let clicado = false;
@@ -644,6 +702,9 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color2()
+          calcularPontos(opacity)
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -654,6 +715,18 @@ function selecionarResposta1() {
     });
   }
 
+  function color2(){
+    let falseElements = document.querySelectorAll('.q2 .false');
+    let trueElements = document.querySelectorAll('.q2 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
   function selecionarResposta3() {
     let clicado = false;
     let optionsQuizz = document.querySelectorAll('.q3');
@@ -662,6 +735,9 @@ function selecionarResposta1() {
       opacity.addEventListener('click', function() {
         if (!clicado) {
           clicado = true;
+          color3()
+          calcularPontos(opacity)
+          scrollToNextElement()
           optionsQuizz.forEach(function(removeOpacity) {
             removeOpacity.classList.add('apply-opacity');
             removeOpacity.style.pointerEvents = 'none';
@@ -671,6 +747,19 @@ function selecionarResposta1() {
       });
     });
   }
+
+  function color3(){
+    let falseElements = document.querySelectorAll('.q3 .false');
+    let trueElements = document.querySelectorAll('.q3 .true');
+
+    falseElements.forEach(function(element) {
+        element.style.color = 'red';
+      });
+      trueElements.forEach(function(element) {
+        element.style.color = 'green';
+      });
+}
+
 
 function alterarCor(elemento, cor){
     document.querySelector(`.color${elemento}`).style.backgroundColor = `${cor}`;
